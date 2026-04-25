@@ -31,3 +31,16 @@ base_dados = {
     "cobre": {"densidade": 8.9, "condutividade": "Extrema", "origem": "Terrestre"},
     "desconhecido": {"densidade": 0.0, "condutividade": "Infinita", "origem": "Arcturiana"}
 }
+
+class GestaoEnergia:
+    def __init__(self, bateria_inicial):
+        self.nivel = bateria_inicial
+
+    def consumir(self, modo_escaneamento):
+        # O modo de longo alcance consome muito mais energia
+        custos = {"curto": 5, "longo": 50}
+        self.nivel -= custos.get(modo_escaneamento, 10)
+        return self.nivel
+
+# Exemplo: Se o escâner for usado no modo de longa distância,
+# ele avisa se a energia estiver baixa.
