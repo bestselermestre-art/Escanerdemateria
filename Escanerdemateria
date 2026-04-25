@@ -103,3 +103,33 @@ if meu_escaner.monitorar_calor():
     print(f"Status do Hardware: {meu_escaner.temperatura_hardware}°C")
 else:
     print("ALERTA: Sistema superaquecido! Peças em risco de fusão.")
+
+def identificar_materia_desconhecida(self, densidade, condutividade, raio_x_atomo):
+    # Tenta buscar na base de dados existente
+    resultado = self.tabela_periodica.get(str(raio_x_atomo))
+    
+    if resultado:
+        return f"Material Identificado: {resultado['nome']}"
+    
+    # Se não encontrar, entra no protocolo de Matéria Desconhecida
+    else:
+        # Gera uma assinatura baseada nas propriedades físicas
+        assinatura_hash = f"ANOMALIA-{densidade}-{raio_x_atomo}"
+        
+        print(f"--- ALERTA: MATÉRIA NÃO CATALOGADA ---")
+        print(f"Assinatura Detectada: {assinatura_hash}")
+        
+        # Lógica de classificação preliminar
+        if densidade > 20:
+            classificacao = "Matéria Ultra-Densa (Provável Núcleo Estelar ou Origem Externa)"
+        elif condutividade == "Infinita":
+            classificacao = "Supercondutor Desconhecido"
+        else:
+            classificacao = "Composto Orgânico ou Mineral Não Identificado"
+            
+        return {
+            "status": "Desconhecido",
+            "ID_Temporario": assinatura_hash,
+            "Classificacao_Provavel": classificacao,
+            "Aviso": "Recomenda-se isolamento da amostra para análise em laboratório Arcturiano."
+        }
