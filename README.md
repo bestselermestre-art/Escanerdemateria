@@ -30,3 +30,9 @@ Proteção Térmica: Como o Raio-X gera radiação e calor, o invólucro do esc�
 
 ## Protocolo de Anomalias: 
 O sistema MateriaFlow possui um algoritmo de detecção de assinaturas desconhecidas, permitindo a catalogação de materiais com propriedades físicas fora do padrão da Tabela Periódica Terrestre.
+
+## Filtro de Interesse
+
+Se o escâner detectar algo com densidade de metal nobre (como Ouro), ele dispara um alerta visual.
+
+Se detectar algo perigoso (como radiação ou instabilidade térmica), ele bloqueia as outras leituras e foca apenas no perigo.
