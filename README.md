@@ -13,7 +13,7 @@ Utiliza processamento recursivo inspirado em padrões espirais para fusão de da
 Em desenvolvimento: Protótipo de lógica de fusão de dados implementado em Python.
 
 ## A Complexidade vs. Vantagens
-Você está certo: a complexidade é alta, mas as vantagens são revolucionárias.
+A complexidade é alta, mas as vantagens são revolucionárias.
 
 Vantagem 1: Visão Não-Invasiva: Com o Raio-X integrado, o escâner "enxerga" através de paredes ou solo denso sem destruir nada.
 
