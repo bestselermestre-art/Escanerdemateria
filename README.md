@@ -27,3 +27,6 @@ Para que esse código rode em um dispositivo real com a tabela periódica comple
 Memória de Massa: Precisamos de memória persistente para armazenar bilhões de combinações moleculares.
 
 Proteção Térmica: Como o Raio-X gera radiação e calor, o invólucro do escâner precisaria de um revestimento de grafeno ou cerâmica técnica para dissipar o calor e proteger os circuitos internos de derreterem.
+
+## Protocolo de Anomalias: 
+O sistema MateriaFlow possui um algoritmo de detecção de assinaturas desconhecidas, permitindo a catalogação de materiais com propriedades físicas fora do padrão da Tabela Periódica Terrestre.
