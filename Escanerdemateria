@@ -133,3 +133,31 @@ def identificar_materia_desconhecida(self, densidade, condutividade, raio_x_atom
             "Classificacao_Provavel": classificacao,
             "Aviso": "Recomenda-se isolamento da amostra para análise em laboratório Arcturiano."
         }
+
+def identificar_anomalia(self, densidade, condutividade, raio_x_num):
+        # Primeiro, verifica se o Raio-X bate com algo conhecido na Tabela Periódica
+        # (Considerando que você adicionou a tabela_periodica no seu __init__)
+        resultado = self.tabela_periodica.get(str(raio_x_num))
+        
+        if resultado:
+            return f"Identificado: {resultado['nome']}"
+        
+        # Se não houver correspondência, inicia o Protocolo de Anomalias
+        else:
+            # Gera um código de rastreio único para esta descoberta
+            id_desconhecido = f"UNK-{densidade}-{int(time.time()) % 1000}"
+            
+            # Tenta classificar o tipo de matéria pelas propriedades físicas
+            if densidade > 22.5:
+                categoria = "Matéria Hiperdensa (Possível origem não-terrestre)"
+            elif densidade < 0.1:
+                categoria = "Plasma ou Matéria Gasosa Exótica"
+            else:
+                categoria = "Composto Complexo Desconhecido"
+                
+            return {
+                "Alerta": "!!! ANOMALIA DETECTADA !!!",
+                "Assinatura": id_desconhecido,
+                "Classificação Preliminar": categoria,
+                "Ação": "Dados enviados para o banco de dados Arcturiano para comparação."
+            }
