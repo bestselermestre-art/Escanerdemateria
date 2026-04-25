@@ -22,3 +22,12 @@ class EscanerDeMateria:
 meu_escaner = EscanerDeMateria("Objeto Desconhecido")
 meu_escaner.coletar_dados(densidade=7.8, condutividade="alta", temp=25.0)
 print(meu_escaner.analisar())
+
+# Adicione estes novos materiais à sua base_dados no nano
+base_dados = {
+    "ferro": {"densidade": 7.8, "condutividade": "Alta", "origem": "Terrestre"},
+    "hematita": {"densidade": 5.2, "condutividade": "Média", "origem": "Marte"},
+    "gelo": {"densidade": 0.9, "condutividade": "Nula", "origem": "Subsolo/Marte"},
+    "cobre": {"densidade": 8.9, "condutividade": "Extrema", "origem": "Terrestre"},
+    "desconhecido": {"densidade": 0.0, "condutividade": "Infinita", "origem": "Arcturiana"}
+}
