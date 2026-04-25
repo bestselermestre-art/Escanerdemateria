@@ -1,0 +1,24 @@
+class EscanerDeMateria:
+    def __init__(self, objeto):
+        self.objeto = objeto
+        self.dados = {
+            "densidade": None,    # Equivalente ao Raio-X
+            "condutividade": None, # Equivalente ao Detector de Metal
+            "termal": None         # Equivalente ao Escâner de Temperatura
+        }
+
+    def coletar_dados(self, densidade, condutividade, temp):
+        self.dados["densidade"] = densidade
+        self.dados["condutividade"] = condutividade
+        self.dados["termal"] = temp
+        
+    def analisar(self):
+        # Aqui entra a sua lógica de 'espiral' que processa tudo junto
+        if self.dados["densidade"] > 5 and self.dados["condutividade"] == "alta":
+            return "Provável liga metálica densa detectada."
+        return "Material orgânico ou isolante detectado."
+
+# Exemplo de uso
+meu_escaner = EscanerDeMateria("Objeto Desconhecido")
+meu_escaner.coletar_dados(densidade=7.8, condutividade="alta", temp=25.0)
+print(meu_escaner.analisar())
