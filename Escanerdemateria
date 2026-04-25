@@ -44,3 +44,21 @@ class GestaoEnergia:
 
 # Exemplo: Se o escâner for usado no modo de longa distância,
 # ele avisa se a energia estiver baixa.
+
+class HardwareMonitor:
+    def __init__(self):
+        self.temperatura = 35.0  # Celsius
+        self.memoria_ocupada = 0  # em GB (simulando a base de dados atômica)
+
+    def status_sistema(self):
+        # A tabela periódica e dados moleculares ocupam espaço
+        self.memoria_ocupada = 128 # Simulação de 128GB de dados atômicos
+        
+        if self.temperatura > 85.0:
+            return "ERRO CRÍTICO: Superaquecimento! Desligando para evitar fusão das peças."
+        return f"Sistema Estável: Temp {self.temperatura}°C | Base de Dados: {self.memoria_ocupada}GB carregados."
+
+    def processar_espiral(self):
+        # O processamento intenso aumenta a temperatura
+        self.temperatura += 15.5
+        return "Processando frequências através dos chips FPGA..."
