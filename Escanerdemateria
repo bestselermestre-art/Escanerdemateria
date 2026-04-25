@@ -161,3 +161,29 @@ def identificar_anomalia(self, densidade, condutividade, raio_x_num):
                 "Classificação Preliminar": categoria,
                 "Ação": "Dados enviados para o banco de dados Arcturiano para comparação."
             }
+
+def priorizar_alvos(self, lista_materiais_detectados):
+    """
+    Recebe uma lista de leituras e decide qual é a mais importante.
+    """
+    print("[*] Analisando múltiplos sinais simultâneos...")
+    
+    alvo_principal = None
+    nivel_prioridade = 0
+
+    for material in lista_materiais_detectados:
+        # Prioridade máxima: Anomalias e Materiais Exóticos
+        if material['tipo'] == "Anomalia" or material['densidade'] > 25:
+            if nivel_prioridade < 3:
+                alvo_principal = material
+                nivel_prioridade = 3
+        
+        # Prioridade média: Metais Valiosos
+        elif material['nome'] in ["Ouro", "Hematita"]:
+            if nivel_prioridade < 2:
+                alvo_principal = material
+                nivel_prioridade = 2
+
+    if alvo_principal:
+        return f"!!! FOCO PRIORITÁRIO DEFINIDO: {alvo_principal['nome']} (Nível {nivel_prioridade})"
+    return "Nenhum alvo de alta relevância detectado no momento."
