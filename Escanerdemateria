@@ -62,3 +62,44 @@ class HardwareMonitor:
         # O processamento intenso aumenta a temperatura
         self.temperatura += 15.5
         return "Processando frequências através dos chips FPGA..."
+
+import time
+
+class MateriaFlowPro:
+    def __init__(self):
+        # Base de Dados Atômica (Exemplos da Tabela Periódica)
+        self.tabela_periodica = {
+            "79": {"nome": "Ouro", "densidade": 19.3, "simbolo": "Au"},
+            "26": {"nome": "Ferro", "densidade": 7.8, "simbolo": "Fe"},
+            "13": {"nome": "Alumínio", "densidade": 2.7, "simbolo": "Al"},
+            "8":  {"nome": "Oxigênio", "densidade": 1.4, "simbolo": "O"}
+        }
+        self.temperatura_hardware = 35.0 # Celsius
+
+    def scan_raio_x(self, massa_detectada):
+        # Simula a penetração de Raio-X para ler o número atômico
+        print("Enviando feixe de Raio-X em espiral...")
+        time.sleep(1) # Simula o tempo de processamento do chip FPGA
+        
+        elemento = self.tabela_periodica.get(str(massa_detectada))
+        
+        if elemento:
+            return f"Raio-X confirmou: {elemento['nome']} ({elemento['simbolo']})"
+        return "Raio-X: Estrutura atômica desconhecida ou complexa."
+
+    def monitorar_calor(self):
+        # Se o uso de Raio-X for intenso, a temperatura sobe
+        self.temperatura_hardware += 12.5
+        if self.temperatura_hardware > 90:
+            return False # Perigo de derretimento
+        return True
+
+# --- Teste do Sistema Integrado ---
+meu_escaner = MateriaFlowPro()
+massa = input("Digite o número atômico detectado pelo sensor: ")
+
+if meu_escaner.monitorar_calor():
+    print(meu_escaner.scan_raio_x(massa))
+    print(f"Status do Hardware: {meu_escaner.temperatura_hardware}°C")
+else:
+    print("ALERTA: Sistema superaquecido! Peças em risco de fusão.")
