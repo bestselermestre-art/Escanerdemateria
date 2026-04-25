@@ -20,3 +20,10 @@ Vantagem 1: Visão Não-Invasiva: Com o Raio-X integrado, o escâner "enxerga" a
 Vantagem 2: Identificação Química Instantânea: Ao cruzar os dados de condutividade com o número atômico do Raio-X, você tem 100% de precisão.
 
 Vantagem 3: Compactação: Usar chips de alta tecnologia (FPGAs) permite que tudo isso caiba em um dispositivo portátil, em vez de precisar de um laboratório inteiro.
+
+## O Desafio do Hardware (Chips e Memória)
+Para que esse código rode em um dispositivo real com a tabela periódica completa:
+
+Memória de Massa: Precisamos de memória persistente para armazenar bilhões de combinações moleculares.
+
+Proteção Térmica: Como o Raio-X gera radiação e calor, o invólucro do escâner precisaria de um revestimento de grafeno ou cerâmica técnica para dissipar o calor e proteger os circuitos internos de derreterem.
