@@ -197,3 +197,31 @@ def validador_sistema(cor_status, valor_numerico):
         return "LOG: Falso positivo detectado no sensor."
 
     return "Sistemas sincronizados."
+
+
+import numpy as np
+
+def filtro_adaptativo(sinal_bruto, nivel_ruido):
+    """
+    Simulação de compensação de frequência:
+    Remove o ruído térmico e amplifica a assinatura do material.
+    """
+    # 1. Identificar o que é ruído (abaixo do limiar)
+    sinal_limpo = np.where(sinal_bruto > nivel_ruido, sinal_bruto, 0)
+    
+    # 2. Ajuste de ganho para profundidade (compensar a perda de sinal)
+    # A profundidade reduz a intensidade, então aplicamos um fator de correção
+    fator_correcao = 1.5 
+    sinal_processado = sinal_limpo * fator_correcao
+    
+    return sinal_processado
+
+# Exemplo de entrada (Simulando uma leitura de sensor)
+leitura_sensor = np.array([0.1, 0.2, 0.8, 0.15, 0.9, 0.05])
+ruido_base = 0.3
+
+# Processamento
+resultado = filtro_adaptativo(leitura_sensor, ruido_base)
+
+print(f"Sinal Original: {leitura_sensor}")
+print(f"Sinal Processado (ATM Logic): {resultado}")
