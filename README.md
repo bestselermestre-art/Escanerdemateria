@@ -38,3 +38,5 @@ Se o escâner detectar algo com densidade de metal nobre (como Ouro), ele dispar
 Se detectar algo perigoso (como radiação ou instabilidade térmica), ele bloqueia as outras leituras e foca apenas no perigo.
 
 ## Função de Comparação Crítica
+
+## Estrutura Base: O "Limpa-Sinais" (Python)
