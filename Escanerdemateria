@@ -187,3 +187,13 @@ def priorizar_alvos(self, lista_materiais_detectados):
     if alvo_principal:
         return f"!!! FOCO PRIORITÁRIO DEFINIDO: {alvo_principal['nome']} (Nível {nivel_prioridade})"
     return "Nenhum alvo de alta relevância detectado no momento."
+
+def validador_sistema(cor_status, valor_numerico):
+    # O sistema checa se a cor "mente" para o engenheiro
+    if cor_status == "Verde" and valor_numerico > 1000:
+        return "ALERTA: Divergência detectada! Cor não condiz com a Telemetria."
+    
+    if cor_status == "Vermelho" and valor_numerico < 10:
+        return "LOG: Falso positivo detectado no sensor."
+
+    return "Sistemas sincronizados."
