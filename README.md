@@ -40,3 +40,4 @@ Se detectar algo perigoso (como radiação ou instabilidade térmica), ele bloqu
 ## Função de Comparação Crítica
 
 ## Estrutura Base: O "Limpa-Sinais" (Python)
+Modularidade: Ele mostra que o MateriaFlow_OS não é um "bloco único", mas um sistema que pode receber qualquer tipo de sensor (GPR, Magnético, etc.).
