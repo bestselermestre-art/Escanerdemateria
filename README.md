@@ -49,3 +49,5 @@ O desperdício de recursos (lítio, silício) e a confusão de dados de sensores
 
 ## A Solução ATM: 
 Um único processador que funde assinaturas espectrais, térmicas, densimétricas e químicas em um único fluxo de dados.
+
+A exploração, seja na Terra ou em Marte, não pode ser feita à custa do esgotamento de recursos. A ATM nasce para provar que a eficiência do software pode substituir a obesidade do hardware.
