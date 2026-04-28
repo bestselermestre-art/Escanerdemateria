@@ -225,3 +225,25 @@ resultado = filtro_adaptativo(leitura_sensor, ruido_base)
 
 print(f"Sinal Original: {leitura_sensor}")
 print(f"Sinal Processado (ATM Logic): {resultado}")
+
+
+def identificar_material(valor_sinal):
+    # Biblioteca de Assinaturas (Química de Unidade)
+    # Valores simulados baseados na condutividade/densidade
+    assinaturas = {
+        "Ouro": 0.95,
+        "Lítio": 0.88,
+        "Água": 0.50,
+        "Rocha Comum": 0.20
+    }
+    
+    # Encontra o material mais próximo do sinal recebido
+    material_detectado = min(assinaturas, key=lambda x: abs(assinaturas[x] - valor_sinal))
+    return material_detectado
+
+# Simulando um sinal vindo do filtro que você já tem
+sinal_limpo = 0.89 
+resultado = identificar_material(sinal_limpo)
+
+print(f"Comando do Arquiteto: Analisar sinal {sinal_limpo}")
+print(f"Relatório da IA: {resultado} detectado com alta precisão.")
