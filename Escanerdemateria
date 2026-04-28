@@ -247,3 +247,47 @@ resultado = identificar_material(sinal_limpo)
 
 print(f"Comando do Arquiteto: Analisar sinal {sinal_limpo}")
 print(f"Relatório da IA: {resultado} detectado com alta precisão.")
+
+
+import time
+
+# Dados técnicos da Consolidação Sensorial
+eficiencia_atm = 10.0  # 10x mais eficiente que o mercado
+bateria_atual = 100.0
+
+def escanear_com_eficiencia(camada, material):
+    global bateria_atual
+    
+    # Consumo simulado: um drone comum gastaria 5%, a ATM gasta 0.5%
+    consumo_comum = 5.0
+    consumo_atm = consumo_comum / eficiencia_atm
+    
+    print(f"\n--- Analisando Camada: {camada} ---")
+    time.sleep(1) # Simula o tempo de processamento do sensor
+    
+    print(f"Material Identificado: {material}")
+    
+    bateria_atual -= consumo_atm
+    economia_gerada = consumo_comum - consumo_atm
+    
+    print(f"Bateria Restante: {bateria_atual:.1f}%")
+    print(f"Energia Poupada nesta análise: {economia_gerada:.1f} unidades")
+    print(f"Status Térmico: Estável (Proteção Ativa)")
+
+# Simulação de Operação
+print("Iniciando MateriaFlow_OS...")
+time.sleep(1)
+
+# Teste de campo unificado (10 sensores em 1)
+analises = [
+    ("Superfície", "Sílica/Areia"),
+    ("Interferência", "Traços de Metano"),
+    ("Alvo Profundo", "Lençol Freático (Água Doce)")
+]
+
+for camada, mat in analises:
+    escanear_com_eficiencia(camada, mat)
+
+print("\n--- Relatório Final ---")
+print("Trabalho de 10 drones realizado por 1 unidade ATM.")
+print("Redução de impacto ambiental confirmada.")
