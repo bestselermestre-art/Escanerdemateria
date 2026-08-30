@@ -1,0 +1,60 @@
+from datetime import datetime
+
+class EscanerDeMateria:
+    def __init__(self, objeto):
+        self.objeto = objeto
+        self.dados = {
+            "densidade": None,
+            "condutividade": None,
+            "termal": None
+        }
+
+    def coletar_dados(self, densidade, condutividade, temp):
+        self.dados["densidade"] = densidade
+        self.dados["condutividade"] = condutividade
+        self.dados["termal"] = temp
+
+    def analisar(self):
+        if self.dados["densidade"] > 5 and self.dados["condutividade"].lower() == "alta":
+            resultado = "Provável liga metálica densa detectada."
+        else:
+            resultado = "Material orgânico ou isolante detectado."
+        
+        self.salvar_log(resultado)
+        return resultado
+
+    def salvar_log(self, resultado):
+        """Grava relatório em arquivo externo com data/hora"""
+        with open("log_escaner.txt", "a", encoding="utf-8") as f:
+            f.write(f"{datetime.now()} | Objeto: {self.objeto} | Dados: {self.dados} | Resultado: {resultado}\n")
+
+    def ler_logs(self, filtro_material=None, filtro_data=None):
+        """Exibe histórico filtrado por material ou data"""
+        try:
+            with open("log_escaner.txt", "r", encoding="utf-8") as f:
+                print("\n--- HISTÓRICO DE ANÁLISES ---")
+                for linha in f:
+                    mostrar = True
+                    if filtro_material and filtro_material.lower() not in linha.lower():
+                        mostrar = False
+                    if filtro_data and filtro_data not in linha:
+                        mostrar = False
+                    if mostrar:
+                        print(linha.strip())
+        except FileNotFoundError:
+            print("Nenhum log encontrado. Nenhuma análise registrada ainda.")
+
+# --- Exemplo de uso ---
+if __name__ == "__main__":
+    meu_escaner = EscanerDeMateria("Objeto Desconhecido")
+    meu_escaner.coletar_dados(densidade=7.8, condutividade="Alta", temp=25.0)
+    print(meu_escaner.analisar())
+
+    # Exibir todos os logs
+    meu_escaner.ler_logs()
+
+    # Exibir apenas logs que contenham "Objeto Desconhecido"
+    meu_escaner.ler_logs(filtro_material="Objeto Desconhecido")
+
+    # Exibir apenas logs de uma data específica (exemplo: "2026-08-30")
+    meu_escaner.ler_logs(filtro_data="2026-08-30")
