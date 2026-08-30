@@ -1,0 +1,46 @@
+from datetime import datetime
+
+class EscanerDeMateria:
+    def __init__(self, objeto):
+        self.objeto = objeto
+        self.dados = {
+            "densidade": None,
+            "condutividade": None,
+            "termal": None
+        }
+
+    def coletar_dados(self, densidade, condutividade, temp):
+        self.dados["densidade"] = densidade
+        self.dados["condutividade"] = condutividade
+        self.dados["termal"] = temp
+
+    def analisar(self):
+        if self.dados["densidade"] > 5 and self.dados["condutividade"].lower() == "alta":
+            resultado = "Provável liga metálica densa detectada."
+        else:
+            resultado = "Material orgânico ou isolante detectado."
+        
+        self.salvar_log(resultado)
+        return resultado
+
+    def salvar_log(self, resultado):
+        """Grava relatório em arquivo externo com data/hora"""
+        with open("log_escaner.txt", "a", encoding="utf-8") as f:
+            f.write(f"{datetime.now()} | Objeto: {self.objeto} | Dados: {self.dados} | Resultado: {resultado}\n")
+
+    def ler_logs(self):
+        """Exibe todo o histórico de análises registradas"""
+        try:
+            with open("log_escaner.txt", "r", encoding="utf-8") as f:
+                print("\n--- HISTÓRICO DE ANÁLISES ---")
+                for linha in f:
+                    print(linha.strip())
+        except FileNotFoundError:
+            print("Nenhum log encontrado. Nenhuma análise registrada ainda.")
+
+# --- Exemplo de uso ---
+if __name__ == "__main__":
+    meu_escaner = EscanerDeMateria("Objeto Desconhecido")
+    meu_escaner.coletar_dados(densidade=7.8, condutividade="Alta", temp=25.0)
+    print(meu_escaner.analisar())
+    meu_escaner.ler_logs()
